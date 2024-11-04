@@ -1,11 +1,11 @@
 [gd_scene load_steps=4 format=3 uid="uid://uo35sptxivld"]
 
-[ext_resource type="Texture2D" uid="uid://cs78kkyon2uvo" path="res://image.png" id="1_x3xvv"]
+[ext_resource type="Texture2D" uid="uid://cowwdnd2qn1bd" path="res://hitanimalhead.png" id="1_1npb6"]
 
 [sub_resource type="GDScript" id="GDScript_gv2m4"]
 script/source = "extends CharacterBody2D
 
-
+## this is all placeholder, movement will be so much more swag
 @export var SPEED = 300.0
 
 
@@ -41,4 +41,4 @@ script = SubResource("GDScript_gv2m4")
 shape = SubResource("CircleShape2D_v5ua4")
 
 [node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
-texture = ExtResource("1_x3xvv")
+texture = ExtResource("1_1npb6")
