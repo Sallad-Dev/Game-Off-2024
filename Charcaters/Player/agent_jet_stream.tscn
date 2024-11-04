@@ -1,21 +1,43 @@
-[gd_scene load_steps=5 format=3 uid="uid://1c86vg4ft60v"]
+[gd_scene load_steps=9 format=3 uid="uid://1c86vg4ft60v"]
 
 [ext_resource type="Script" path="res://AgentJetStream.gd" id="1_8lg8a"]
-[ext_resource type="Texture2D" uid="uid://cowwdnd2qn1bd" path="res://hitanimalhead.png" id="2_f5ux0"]
-[ext_resource type="Script" path="res://Game-Off-2024/Charcaters/Player/JetStreamSprite.gd" id="3_yve6t"]
+[ext_resource type="Texture2D" uid="uid://cwueym0jpxjme" path="res://jetstreambodysprites.png" id="2_1q581"]
+[ext_resource type="Script" path="res://Game-Off-2024/Charcaters/Player/animated_sprite_2d.gd" id="3_ap4ak"]
+[ext_resource type="Texture2D" uid="uid://bvotx6ogk5d3t" path="res://cursor.png" id="4_hfm8t"]
+[ext_resource type="Script" path="res://Game-Off-2024/Charcaters/Player/cursor.gd" id="4_iy3dd"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_o2cq6"]
 radius = 6.0
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_lfh6q"]
+atlas = ExtResource("2_1q581")
+region = Rect2(24, 0, 12, 9)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_pwwx1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lfh6q")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
 [node name="AgentJetStream" type="CharacterBody2D"]
 script = ExtResource("1_8lg8a")
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_f5ux0")
-script = ExtResource("3_yve6t")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_o2cq6")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(6, 6)
+
+[node name="JetStreamSprite" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_pwwx1")
+script = ExtResource("3_ap4ak")
+
+[node name="Cursor" type="Sprite2D" parent="."]
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("4_hfm8t")
+script = ExtResource("4_iy3dd")
