@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=4 uid="uid://cklcjxsygkide"]
+[gd_scene load_steps=7 format=4 uid="uid://cklcjxsygkide"]
 
 [ext_resource type="Texture2D" uid="uid://ct1sd237wexeq" path="res://mvp tilemap.png" id="1_ihprx"]
 [ext_resource type="PackedScene" uid="uid://1c86vg4ft60v" path="res://Game-Off-2024/Charcaters/Player/scense and scripts/agent_jet_stream.tscn" id="2_f23it"]
+[ext_resource type="Script" path="res://Game-Off-2024/TestWorlds/static_body_2d.gd" id="3_jylnb"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_e1wxy"]
 texture = ExtResource("1_ihprx")
@@ -181,6 +182,8 @@ texture_region_size = Vector2i(8, 8)
 tile_size = Vector2i(8, 8)
 sources/0 = SubResource("TileSetAtlasSource_e1wxy")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gk2eb"]
+
 [node name="Test World Gamers" type="Node"]
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
@@ -191,3 +194,10 @@ tile_set = SubResource("TileSet_l1nqo")
 [node name="AgentJetStream" parent="." instance=ExtResource("2_f23it")]
 position = Vector2(77, 49)
 SPEED = 100.0
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(132, 26)
+script = ExtResource("3_jylnb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("RectangleShape2D_gk2eb")
