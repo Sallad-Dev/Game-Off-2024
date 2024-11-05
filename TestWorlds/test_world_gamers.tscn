@@ -198,7 +198,6 @@ tile_set = SubResource("TileSet_l1nqo")
 
 [node name="AgentJetStream" parent="." instance=ExtResource("2_f23it")]
 position = Vector2(77, 49)
-SPEED = 100.0
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 position = Vector2(132, 26)

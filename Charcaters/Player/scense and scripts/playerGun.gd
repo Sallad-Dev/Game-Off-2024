@@ -38,8 +38,3 @@ func shoot_gun():
 			var obj = result.collider
 			if obj.has_method("take_damage"):
 				obj.take_damage()
-			
-
-
-func _on_shot_timer_timeout() -> void:
-	pass
