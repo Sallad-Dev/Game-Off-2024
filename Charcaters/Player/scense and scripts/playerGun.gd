@@ -21,19 +21,25 @@ func _process(_delta):
 
 #generic shooting func
 func shoot_gun():
-	var target_dist = (mouse_pos - global_position).normalized()*range_bullet
-	#raycast shenanigans
-	var space_state = get_world_2d().direct_space_state
-	# use global coordinates, not local to node
-	var query = PhysicsRayQueryParameters2D.create(owner.global_position, target_dist)
-	var result = space_state.intersect_ray(query)
-	
 	if shot_timer.is_stopped():
+		shot_timer.start()
+		
+		var target_dist = (mouse_pos - global_position).normalized()*range_bullet
+		#raycast shenanigans
+		var space_state = get_world_2d().direct_space_state
+		# use global coordinates, not local to node
+		var query = PhysicsRayQueryParameters2D.create(owner.global_position, target_dist)
+		var result = space_state.intersect_ray(query)
+	
 		bullet_particle.emitting = true
-
+		
 		if result:
 
 			var obj = result.collider
 			if obj.has_method("take_damage"):
 				obj.take_damage()
-			shot_timer.start()
+			
+
+
+func _on_shot_timer_timeout() -> void:
+	pass
