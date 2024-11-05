@@ -7,16 +7,16 @@ extends CharacterBody2D
 
 
 func _physics_process(_delta: float) -> void:
-	#raycast shenanigans
-	var space_state = get_world_2d().direct_space_state
-	# use global coordinates, not local to node
-	var query = PhysicsRayQueryParameters2D.create(global_position, get_global_mouse_position())
-	var result = space_state.intersect_ray(query)
-	
-	if result:
-		var obj = result.collider
-		if Input.is_action_just_pressed("action_shoot"):
-			obj.gamer()
+	##raycast shenanigans
+	#var space_state = get_world_2d().direct_space_state
+	## use global coordinates, not local to node
+	#var query = PhysicsRayQueryParameters2D.create(global_position, get_global_mouse_position())
+	#var result = space_state.intersect_ray(query)
+	#
+	#if result:
+		#var obj = result.collider
+		#if Input.is_action_just_pressed("action_shoot"):
+			#obj.gamer()
 	
 
 		##push boxes test
