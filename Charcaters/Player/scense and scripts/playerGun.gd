@@ -3,6 +3,7 @@ extends Node2D
 @onready var gun_sprite: AnimatedSprite2D = $gunSprite
 @onready var shot_timer: Timer = $ShotTimer
 @onready var bullet_particle: CPUParticles2D = $bulletParticle
+@onready var gun_sound: AudioStreamPlayer = $GunSound
 
 @export var range_bullet: int = 1000
 
@@ -29,9 +30,9 @@ func shoot_gun():
 		# use global coordinates, not local to node
 		var query = PhysicsRayQueryParameters2D.create(owner.global_position, target_dist)
 		var result = space_state.intersect_ray(query)
-	
-		bullet_particle.emitting = true
 		
+		bullet_particle.emitting = true
+		gun_sound.play(0.0)
 		if result:
 			
 			var obj = result.collider
