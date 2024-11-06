@@ -1,14 +1,14 @@
-[gd_scene load_steps=21 format=3 uid="uid://1c86vg4ft60v"]
+[gd_scene load_steps=22 format=3 uid="uid://1c86vg4ft60v"]
 
 [ext_resource type="Script" path="res://Game-Off-2024/Charcaters/Player/scense and scripts/AgentJetStream.gd" id="1_8lg8a"]
-[ext_resource type="Texture2D" uid="uid://cwueym0jpxjme" path="res://Game-Off-2024/Charcaters/Player/player art/jetstreambodysprites.png" id="2_1q581"]
+[ext_resource type="Texture2D" uid="uid://cwueym0jpxjme" path="res://Game-Off-2024/Assets/player art/jetstreambodysprites.png" id="2_1q581"]
 [ext_resource type="Script" path="res://Game-Off-2024/Charcaters/Player/scense and scripts/animated_sprite_2d.gd" id="3_ap4ak"]
-[ext_resource type="Texture2D" uid="uid://bvotx6ogk5d3t" path="res://Game-Off-2024/Charcaters/Player/player art/cursor.png" id="4_hfm8t"]
+[ext_resource type="Texture2D" uid="uid://bvotx6ogk5d3t" path="res://Game-Off-2024/Assets/player art/cursor.png" id="4_hfm8t"]
 [ext_resource type="Script" path="res://Game-Off-2024/Charcaters/Player/scense and scripts/cursor.gd" id="4_iy3dd"]
 [ext_resource type="Script" path="res://Game-Off-2024/Charcaters/Player/scense and scripts/playerBody.gd" id="6_r3q76"]
 [ext_resource type="Script" path="res://Game-Off-2024/Charcaters/Player/scense and scripts/playerHead.gd" id="7_ppv3f"]
 [ext_resource type="Script" path="res://Game-Off-2024/Charcaters/Player/scense and scripts/playerGun.gd" id="8_h0ye3"]
-[ext_resource type="Script" path="res://Game-Off-2024/Charcaters/Player/scense and scripts/testLabelTimer.gd" id="9_nu3uo"]
+[ext_resource type="Texture2D" uid="uid://bglfxh442t4ic" path="res://Game-Off-2024/Assets/Characters/hit_animal_sprite_sheet_compile.png" id="9_jknct"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_o2cq6"]
 radius = 6.0
@@ -74,6 +74,11 @@ animations = [{
 "name": &"idle",
 "speed": 5.0
 }]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lgce3"]
+atlas = ExtResource("9_jknct")
+region = Rect2(32, 16, 16, 16)
+filter_clip = true
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vbfi6"]
 atlas = ExtResource("2_1q581")
@@ -150,14 +155,15 @@ script = ExtResource("8_h0ye3")
 position = Vector2(14, -2)
 emitting = false
 amount = 1
-lifetime = 0.1
+lifetime = 0.2
 one_shot = true
-local_coords = true
+texture = SubResource("AtlasTexture_lgce3")
+particle_flag_align_y = true
 direction = Vector2(0, 0)
 spread = 0.0
 gravity = Vector2(0, 0)
-initial_velocity_min = 750.0
-initial_velocity_max = 750.0
+initial_velocity_min = 1250.0
+initial_velocity_max = 1250.0
 
 [node name="gunSprite" type="AnimatedSprite2D" parent="Gun"]
 z_index = -5
@@ -167,12 +173,5 @@ animation = &"shoot"
 autoplay = "idle"
 
 [node name="ShotTimer" type="Timer" parent="Gun"]
-wait_time = 0.5
+wait_time = 0.25
 one_shot = true
-
-[node name="Label" type="Label" parent="."]
-offset_left = -62.0
-offset_top = -41.0
-offset_right = -22.0
-offset_bottom = -18.0
-script = ExtResource("9_nu3uo")
