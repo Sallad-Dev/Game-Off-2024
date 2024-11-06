@@ -7,12 +7,18 @@ class_name EnemyDead
 @onready var blood_splatter: CPUParticles2D = $"../../BloodSplatter"
 
 func Enter():
+	owner.velocity = Vector2.ZERO
 	blood_splatter.direction = (owner.global_position - player.global_position).normalized()*100
 	blood_splatter.emitting = true
+	play_dead_anims()
+	owner.direction = (player.global_position - owner.global_position).normalized()*100
+	owner.get_node("CollisionShape2D").disabled = true
+	
+	
+func Update(_delta):
+	pass
+
+func play_dead_anims():
 	owner.get_node("Sprite").play("Dead")
 	body_sprite.play("Dead")
 	head_sprite.play("Dead")
-	owner.direction = (player.global_position - owner.global_position).normalized()*100
-	owner.velocity = Vector2.ZERO
-	owner.get_node("CollisionShape2D").queue_free()
-	

@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://b85apkrrd5foj"]
+[gd_scene load_steps=25 format=3 uid="uid://b85apkrrd5foj"]
 
 [ext_resource type="Script" path="res://enemy_class.gd" id="1_ipq1s"]
 [ext_resource type="PackedScene" uid="uid://c5tgk0k26x3b1" path="res://Game-Off-2024/Generic_StateMachine/state_machine.tscn" id="2_qwvhg"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://bglfxh442t4ic" path="res://Game-Off-2024/Assets/Characters/hit_animal_sprite_sheet_compile.png" id="6_434fe"]
 [ext_resource type="Script" path="res://Game-Off-2024/Enemies/Scripts/enemyScared.gd" id="7_718iy"]
 [ext_resource type="PackedScene" uid="uid://dq0k7eyogbqv2" path="res://Game-Off-2024/Enemies/Scenes/enemyDead.tscn" id="8_2dova"]
+[ext_resource type="Script" path="res://Game-Off-2024/Enemies/Scripts/enemyPatrol.gd" id="9_win4c"]
 [ext_resource type="Script" path="res://Game-Off-2024/Enemies/Scenes/head_sprite.gd" id="10_2t0a8"]
 [ext_resource type="Script" path="res://Game-Off-2024/Enemies/Scripts/enemyBodySprite.gd" id="10_qqa3u"]
 
@@ -40,7 +41,7 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_6gvd5"]
-radius = 8.0
+radius = 9.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xax81"]
 atlas = ExtResource("6_434fe")
@@ -115,11 +116,13 @@ region = Rect2(96, 48, 16, 16)
 [node name="BasicEnemy1" type="CharacterBody2D"]
 z_index = -15
 script = ExtResource("1_ipq1s")
+SPEED = 1500
 
 [node name="Behaviours" parent="." node_paths=PackedStringArray("current_state") instance=ExtResource("2_qwvhg")]
-current_state = NodePath("Idle")
+current_state = NodePath("Patrol")
 
 [node name="Idle" parent="Behaviours" instance=ExtResource("3_f5jfp")]
+idle_time_min = 1.0
 
 [node name="Aware" type="Node" parent="Behaviours"]
 script = ExtResource("4_mlok6")
@@ -135,6 +138,9 @@ script = ExtResource("7_718iy")
 
 [node name="Dead" parent="Behaviours" instance=ExtResource("8_2dova")]
 
+[node name="Patrol" type="Node" parent="Behaviours"]
+script = ExtResource("9_win4c")
+
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_cckly")
 animation = &"idle"
@@ -148,15 +154,26 @@ shape = SubResource("CircleShape2D_6gvd5")
 [node name="headSprite" type="AnimatedSprite2D" parent="Head"]
 z_index = 4
 sprite_frames = SubResource("SpriteFrames_lb1d7")
-animation = &"Dead"
+animation = &"idle"
 autoplay = "idle"
 script = ExtResource("10_2t0a8")
+
+[node name="Raycasts" type="Node2D" parent="Head/headSprite"]
+
+[node name="RayCast2D" type="RayCast2D" parent="Head/headSprite/Raycasts"]
+target_position = Vector2(41, 0)
+
+[node name="RayCast2D2" type="RayCast2D" parent="Head/headSprite/Raycasts"]
+target_position = Vector2(38, 9)
+
+[node name="RayCast2D3" type="RayCast2D" parent="Head/headSprite/Raycasts"]
+target_position = Vector2(38, -9)
 
 [node name="Body" type="Node2D" parent="."]
 
 [node name="bodySprite" type="AnimatedSprite2D" parent="Body"]
 sprite_frames = SubResource("SpriteFrames_m8wrf")
-animation = &"Dead"
+animation = &"idle"
 autoplay = "idle"
 script = ExtResource("10_qqa3u")
 
@@ -177,14 +194,3 @@ spread = 180.0
 gravity = Vector2(0, 0)
 initial_velocity_min = 150.0
 initial_velocity_max = 350.0
-
-[node name="Raycasts" type="Node2D" parent="."]
-
-[node name="RayCast2D" type="RayCast2D" parent="Raycasts"]
-target_position = Vector2(41, 0)
-
-[node name="RayCast2D2" type="RayCast2D" parent="Raycasts"]
-target_position = Vector2(38, 9)
-
-[node name="RayCast2D3" type="RayCast2D" parent="Raycasts"]
-target_position = Vector2(38, -9)
