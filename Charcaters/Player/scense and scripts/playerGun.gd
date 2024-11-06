@@ -33,8 +33,8 @@ func shoot_gun():
 		bullet_particle.emitting = true
 		
 		if result:
+			
 			var obj = result.collider
 			if obj.has_method("take_damage"):
 				obj.take_damage()
-				
 		shot_timer.start()

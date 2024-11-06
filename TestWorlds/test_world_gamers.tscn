@@ -1,9 +1,8 @@
-[gd_scene load_steps=11 format=4 uid="uid://cklcjxsygkide"]
+[gd_scene load_steps=9 format=4 uid="uid://cklcjxsygkide"]
 
 [ext_resource type="Texture2D" uid="uid://ct1sd237wexeq" path="res://mvp tilemap.png" id="1_ihprx"]
 [ext_resource type="PackedScene" uid="uid://1c86vg4ft60v" path="res://Game-Off-2024/Charcaters/Player/scense and scripts/agent_jet_stream.tscn" id="2_f23it"]
 [ext_resource type="Script" path="res://Game-Off-2024/TestWorlds/static_body_2d.gd" id="3_jylnb"]
-[ext_resource type="Script" path="res://enemy_class.gd" id="4_it0re"]
 [ext_resource type="PackedScene" uid="uid://b85apkrrd5foj" path="res://Game-Off-2024/Enemies/Scripts/basic_enemy_1.tscn" id="5_8reg8"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_e1wxy"]
@@ -188,8 +187,6 @@ sources/0 = SubResource("TileSetAtlasSource_e1wxy")
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_mwwcd"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_7w3mr"]
-
 [node name="Test World Gamers" type="Node"]
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
@@ -213,12 +210,21 @@ position = Vector2(66, 21)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
 shape = SubResource("CircleShape2D_mwwcd")
 
-[node name="EnemyClass" type="CharacterBody2D" parent="."]
-position = Vector2(35, 50)
-script = ExtResource("4_it0re")
+[node name="enemies" type="Node" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyClass"]
-shape = SubResource("CircleShape2D_7w3mr")
-debug_color = Color(0.29468, 0.6101, 0.442355, 0.42)
+[node name="BasicEnemy1" parent="enemies" instance=ExtResource("5_8reg8")]
 
-[node name="BasicEnemy1" parent="." instance=ExtResource("5_8reg8")]
+[node name="BasicEnemy2" parent="enemies" instance=ExtResource("5_8reg8")]
+position = Vector2(107, 23)
+
+[node name="BasicEnemy3" parent="enemies" instance=ExtResource("5_8reg8")]
+position = Vector2(113, -16)
+
+[node name="BasicEnemy4" parent="enemies" instance=ExtResource("5_8reg8")]
+position = Vector2(-11, 30)
+
+[node name="BasicEnemy5" parent="enemies" instance=ExtResource("5_8reg8")]
+position = Vector2(-50, 11)
+
+[node name="BasicEnemy6" parent="enemies" instance=ExtResource("5_8reg8")]
+position = Vector2(5, -22)
