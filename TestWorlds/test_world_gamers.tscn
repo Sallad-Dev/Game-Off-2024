@@ -1,9 +1,12 @@
-[gd_scene load_steps=10 format=4 uid="uid://cklcjxsygkide"]
+[gd_scene load_steps=13 format=4 uid="uid://cklcjxsygkide"]
 
 [ext_resource type="PackedScene" uid="uid://1c86vg4ft60v" path="res://Game-Off-2024/Charcaters/Player/scense and scripts/agent_jet_stream.tscn" id="2_f23it"]
+[ext_resource type="Script" path="res://Game-Off-2024/TestWorlds/poi_1.gd" id="3_18v7l"]
 [ext_resource type="Script" path="res://Game-Off-2024/Enemies/Scripts/points_of_interest.gd" id="4_7oebo"]
+[ext_resource type="Script" path="res://Game-Off-2024/Enemies/Scripts/poi_2.gd" id="4_tyn4a"]
+[ext_resource type="PackedScene" uid="uid://gyb1vdehh0j8" path="res://Game-Off-2024/Enemies/Scenes/target_enemy.tscn" id="4_x7kss"]
 [ext_resource type="Texture2D" uid="uid://bqmxwja817poa" path="res://Game-Off-2024/Assets/Tilesets/hit_animal_tile_map.png" id="4_yi6fu"]
-[ext_resource type="PackedScene" uid="uid://b85apkrrd5foj" path="res://Game-Off-2024/Enemies/Scenes/basic_enemy_1.tscn" id="5_8reg8"]
+[ext_resource type="Script" path="res://Game-Off-2024/TestWorlds/poi_3.gd" id="5_yqh7l"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_y7i0l"]
 texture = ExtResource("4_yi6fu")
@@ -74,46 +77,32 @@ z_index = -4000
 tile_map_data = PackedByteArray("AAD8//3/AAAFAAAAAAD8//7/AAAFAAAAAAD8////AAAFAAAAAAD8/wAAAAAFAAAAAAD8/wEAAAAFAAAAAAD8/wIAAAAGAAAAAFD8/wMAAAAGAAAAAFD8/wQAAAAGAAAAAFD8/wUAAAAFAAAAAAD8/wYAAAAFAAAAAAD8/wcAAAAFAAAAAAD9/wgAAAAGAAEAAAD+/wgAAAAGAAAAAAD//wgAAAAGAAAAAAAAAAgAAAAGAAAAAAABAAgAAAAGAAEAAAACAAgAAAAGAAEAAAADAAgAAAAGAAEAAAAEAAgAAAAGAAEAAAAFAAgAAAAGAAEAAAAGAAgAAAAGAAEAAAAHAAgAAAAGAAEAAAAIAAgAAAAGAAEAAAAJAAgAAAAGAAEAAAAKAAgAAAAGAAEAAAALAAgAAAAGAAEAAAAMAAgAAAAGAAEAAAD8/wgAAAAFAAEAAAANAAgAAAAFAAEAAGANAPz/AAAFAAEAADD8//z/AAAFAAEAAFD9//z/AAAGAAEAADD+//z/AAAGAAEAADD///z/AAAGAAEAADAAAPz/AAAGAAEAADABAPz/AAAGAAEAADACAPz/AAAGAAEAADADAPz/AAAGAAAAADAEAPz/AAAGAAAAADAFAPz/AAAGAAAAADAGAPz/AAAGAAAAADAHAPz/AAAGAAEAADAIAPz/AAAGAAEAADAJAPz/AAAGAAEAADAKAPz/AAAGAAEAADALAPz/AAAGAAEAADAMAPz/AAAGAAEAADANAP3/AAAFAAAAADANAP7/AAAGAAAAAGANAP//AAAGAAAAAGANAAAAAAAGAAAAAGANAAEAAAAFAAAAADANAAIAAAAFAAAAADANAAMAAAAFAAAAADANAAQAAAAFAAAAADANAAUAAAAFAAAAADANAAYAAAAFAAAAADANAAcAAAAFAAAAADA=")
 tile_set = SubResource("TileSet_egqc0")
 
-[node name="enemies" type="Node" parent="."]
-
-[node name="BasicEnemy5" parent="enemies" node_paths=PackedStringArray("POI") instance=ExtResource("5_8reg8")]
-position = Vector2(190, 31)
-POI = [NodePath("../../POIs/PointOfInterest2"), NodePath("../../POIs/PointOfInterest3"), NodePath("../../POIs/PointOfInterest5")]
-
-[node name="BasicEnemy7" parent="enemies" node_paths=PackedStringArray("POI") instance=ExtResource("5_8reg8")]
-position = Vector2(205, -19)
-POI = [NodePath("../../POIs/PointOfInterest2"), NodePath("../../POIs/PointOfInterest4")]
-
-[node name="BasicEnemy6" parent="enemies" node_paths=PackedStringArray("POI") instance=ExtResource("5_8reg8")]
-position = Vector2(63, 77)
-POI = [NodePath("../../POIs/PointOfInterest3"), NodePath("../../POIs/PointOfInterest"), NodePath("../../POIs/PointOfInterest2")]
-
-[node name="BasicEnemy8" parent="enemies" node_paths=PackedStringArray("POI") instance=ExtResource("5_8reg8")]
-position = Vector2(-24, 6)
-POI = [NodePath("../../POIs/PointOfInterest3"), NodePath("../../POIs/PointOfInterest"), NodePath("../../POIs/PointOfInterest2")]
-
-[node name="BasicEnemy9" parent="enemies" node_paths=PackedStringArray("POI") instance=ExtResource("5_8reg8")]
-position = Vector2(-24, 6)
-POI = [NodePath("../../POIs/PointOfInterest2"), NodePath("../../POIs/PointOfInterest3"), NodePath("../../POIs/PointOfInterest")]
-
 [node name="POIs" type="Node" parent="."]
 
-[node name="PointOfInterest" type="Node2D" parent="POIs"]
+[node name="POI1" type="Node2D" parent="POIs"]
 position = Vector2(76, 31)
-script = ExtResource("4_7oebo")
+script = ExtResource("3_18v7l")
 
-[node name="PointOfInterest2" type="Node2D" parent="POIs"]
+[node name="POI2" type="Node2D" parent="POIs"]
+position = Vector2(125, 125)
+script = ExtResource("4_tyn4a")
+
+[node name="POI3" type="Node2D" parent="POIs"]
 position = Vector2(182, -17)
-script = ExtResource("4_7oebo")
+script = ExtResource("5_yqh7l")
 
-[node name="PointOfInterest3" type="Node2D" parent="POIs"]
+[node name="POI4" type="Node2D" parent="POIs"]
 position = Vector2(-8, 97)
 script = ExtResource("4_7oebo")
 
-[node name="PointOfInterest4" type="Node2D" parent="POIs"]
+[node name="POI5" type="Node2D" parent="POIs"]
 position = Vector2(-24, -27)
 script = ExtResource("4_7oebo")
 
-[node name="PointOfInterest5" type="Node2D" parent="POIs"]
+[node name="POI6" type="Node2D" parent="POIs"]
 position = Vector2(186, 116)
 script = ExtResource("4_7oebo")
+
+[node name="TargetEnemy" parent="." node_paths=PackedStringArray("POI") instance=ExtResource("4_x7kss")]
+speed = 1250
+POI = [NodePath("../POIs/POI1"), NodePath("../POIs/POI6"), NodePath("../POIs/POI2"), NodePath("../POIs/POI3"), NodePath("../POIs/POI4"), NodePath("../POIs/POI5")]
