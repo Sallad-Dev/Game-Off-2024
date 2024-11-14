@@ -1,5 +1,7 @@
 extends Node2D
 
+
+##TODO change the gun system fundamentally
 @onready var gun_sprite: AnimatedSprite2D = $gunSprite
 @onready var shot_timer: Timer = $ShotTimer
 @onready var bullet_particle: CPUParticles2D = $bulletParticle
