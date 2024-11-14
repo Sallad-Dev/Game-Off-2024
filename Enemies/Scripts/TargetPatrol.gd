@@ -1,28 +1,31 @@
 extends State
 class_name TargetEnemyPatrol
 
-##TODO transition to other states
+##TODO transition to other states // Other states need to exist first.
 
 
 func Enter() -> void:
 	if owner.poi_list.is_empty():
 		reset_poi_list()
 	set_next_poi()
-
-func Exit() -> void:
-	pass
+	owner.look_at(get_current_poi_pos())
 
 func Update(_delta: float) -> void:
 	pass
+
 
 func Physics_update(delta: float) -> void:
 	var poi_to_target = get_current_poi_pos()-owner.global_position
 	owner.velocity = poi_to_target.normalized()*owner.speed*delta
 	
-	##TODO change idle to POI Arrival state
 	if poi_to_target.length() <= 16:
 		transitioned.emit("POIArrival")
-	
+
+
+func Exit() -> void:
+	pass
+
+
 #setters and getters
 func get_poi_list():
 	return owner.poi_list
