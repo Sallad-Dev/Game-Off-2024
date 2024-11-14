@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bvotx6ogk5d3t"
-path="res://.godot/imported/cursor.png-7eae65f1b019d189e3bf17924afec6d5.ctex"
+uid="uid://cowwdnd2qn1bd"
+path="res://.godot/imported/hitanimalhead.png-d4cbfd52a8e593b61bd761501d1cfdeb.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Game-Off-2024/Charcaters/Player/player art/cursor.png"
-dest_files=["res://.godot/imported/cursor.png-7eae65f1b019d189e3bf17924afec6d5.ctex"]
+source_file="res://Game-Off-2024/Assets/player art/hitanimalhead.png"
+dest_files=["res://.godot/imported/hitanimalhead.png-d4cbfd52a8e593b61bd761501d1cfdeb.ctex"]
 
 [params]
 

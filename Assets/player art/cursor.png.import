@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cs78kkyon2uvo"
-path="res://.godot/imported/themanhimself.png-acafbee18bd02a2450a76bb9698c725e.ctex"
+uid="uid://bvotx6ogk5d3t"
+path="res://.godot/imported/cursor.png-f20e26bbb8fddadcccf9374c6bb08ce4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Game-Off-2024/Charcaters/Player/player art/themanhimself.png"
-dest_files=["res://.godot/imported/themanhimself.png-acafbee18bd02a2450a76bb9698c725e.ctex"]
+source_file="res://Game-Off-2024/Assets/player art/cursor.png"
+dest_files=["res://.godot/imported/cursor.png-f20e26bbb8fddadcccf9374c6bb08ce4.ctex"]
 
 [params]
 
